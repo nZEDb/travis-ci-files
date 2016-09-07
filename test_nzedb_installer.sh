@@ -113,7 +113,7 @@ curlPage() {
 if [[ -z $3 ]]; then
 	PAGE=$(curl \
 	--url "$HTTP://$HOST/install/$1" \
-	-L -s \
+	-L -v \
 	--cookie "$COOKIE" \
 	--header "Host: $HOST" \
 	--header "Connection: keep-alive" \
@@ -127,7 +127,7 @@ else
 	PAGE=$(curl \
 	--data "$3" \
 	--url "$HTTP://$HOST/install/$1" \
-	-L -s \
+	-L -v \
 	--cookie "$COOKIE" \
 	--header "Host: $HOST" \
 	--header "Connection: keep-alive" \
