@@ -111,6 +111,11 @@ fi
 
 curlPage() {
 if [[ -z $3 ]]; then
+	if [[ -z $2 ]]; then
+		REFERER=""
+	else
+		REFERER="$2"
+	fi
 	PAGE=$(curl \
 	--url "$HTTP://$HOST/install/$1" \
 	-L -s \
@@ -120,7 +125,7 @@ if [[ -z $3 ]]; then
 	--header "Upgrade-Insecure-Requests: 1" \
 	--header "User-Agent: $AGENT" \
 	--header "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
-	--header "Referer: $HTTP://$HOST/install/$2" \
+	--header "Referer: $HTTP://$HOST/install/$REFERER" \
 	--header "Accept-Language: en-US,en;q=0.8"
 	)
 else
